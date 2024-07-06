@@ -157,22 +157,50 @@ console.log("this is the basic file of the proacademy typescript series on youtu
 
 // static methods and properties
 
-class Mobile{
-    public static count:number = 0;
-    constructor(public name:string,public brand:string, public price:number,public purchased:boolean){
-        Mobile.count++;
+// class Mobile{
+//     public static count:number = 0;
+//     constructor(public name:string,public brand:string, public price:number,public purchased:boolean){
+//         Mobile.count++;
+//     }
+//     greetBuyer(){
+//         if (this.purchased) {
+//             console.log(`thanks for buying our ${this.name}, at ${this.price}, love from ${this.brand} `)
+//         }else{
+//             console.log(`thanks for showing interest in ${this.name} our customer sales executive will contact you shortly...`)
+//         }
+//     }
+// }
+// const cust1 = new Mobile('I Phone','Apple',160000,true);
+// // console.log(cust1);
+// // cust1.greetBuyer();
+// console.log(Mobile.count)
+// const cust2 = new Mobile('Vivo V17 pro','Vivo',26000,true);
+// console.log(Mobile.count);
+
+/***************************************************************/
+// *****Lecture 50: Extending Interface***********************
+/**************************************************************/
+
+interface GrandParents{
+    grandParentsProperty:string
+    giveHouse():void;
+}
+
+interface Parents extends GrandParents{
+    parentsProperty:string
+    giveCar():void
+}
+
+class Children implements Parents{
+    constructor(public childName:string,public grandParentsProperty:string,public parentsProperty:string){}
+    giveHouse(): void {
+        console.log("hello"+" "+this.childName+" here is your "+" "+this.grandParentsProperty);
     }
-    greetBuyer(){
-        if (this.purchased) {
-            console.log(`thanks for buying our ${this.name}, at ${this.price}, love from ${this.brand} `)
-        }else{
-            console.log(`thanks for showing interest in ${this.name} our customer sales executive will contact you shortly...`)
-        }
+    giveCar(): void {
+        console.log("hello"+" "+this.childName+" here is your "+" "+this.parentsProperty);
     }
 }
-const cust1 = new Mobile('I Phone','Apple',160000,true);
-// console.log(cust1);
-// cust1.greetBuyer();
-console.log(Mobile.count)
-const cust2 = new Mobile('Vivo V17 pro','Vivo',26000,true);
-console.log(Mobile.count);
+const sibling1 = new Children('rishi','House','Car');
+console.log(sibling1);
+sibling1.giveCar();
+sibling1.giveHouse();
