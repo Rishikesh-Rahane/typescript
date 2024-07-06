@@ -181,26 +181,57 @@ console.log("this is the basic file of the proacademy typescript series on youtu
 // *****Lecture 50: Extending Interface***********************
 /**************************************************************/
 
-interface GrandParents{
-    grandParentsProperty:string
-    giveHouse():void;
-}
+// interface GrandParents{
+//     grandParentsProperty:string
+//     giveHouse():void;
+// }
 
-interface Parents extends GrandParents{
-    parentsProperty:string
-    giveCar():void
-}
+// interface Parents extends GrandParents{
+//     parentsProperty:string
+//     giveCar():void
+// }
 
-class Children implements Parents{
-    constructor(public childName:string,public grandParentsProperty:string,public parentsProperty:string){}
-    giveHouse(): void {
-        console.log("hello"+" "+this.childName+" here is your "+" "+this.grandParentsProperty);
-    }
-    giveCar(): void {
-        console.log("hello"+" "+this.childName+" here is your "+" "+this.parentsProperty);
-    }
-}
-const sibling1 = new Children('rishi','House','Car');
-console.log(sibling1);
-sibling1.giveCar();
-sibling1.giveHouse();
+// class Children implements Parents{
+//     constructor(public childName:string,public grandParentsProperty:string,public parentsProperty:string){}
+//     giveHouse(): void {
+//         console.log("hello"+" "+this.childName+" here is your "+" "+this.grandParentsProperty);
+//     }
+//     giveCar(): void {
+//         console.log("hello"+" "+this.childName+" here is your "+" "+this.parentsProperty);
+//     }
+// }
+// const sibling1 = new Children('rishi','House','Car');
+// console.log(sibling1);
+// sibling1.giveCar();
+// sibling1.giveHouse();
+
+/***************************************************************/
+// *****Lecture 53: Type Guard in typescript***********************
+/**************************************************************/
+
+// class Animal{
+//     creatureSonud(){
+//         console.log('general creature sound:');
+//     };
+//     constructor(){}
+// }
+// class Dog extends Animal{
+//     bark(){
+//         console.log('wof, wof....');
+//     }
+// }
+// type sound = Animal;
+
+// function displaySound(s:sound){
+//  if (s instanceof Dog) {
+//     s.bark();
+//  }else{
+//     s.creatureSonud();
+//  }
+// }
+// let dog = new Dog();
+// let animal = new Animal();
+// displaySound(dog);
+// displaySound(animal);
+
+
