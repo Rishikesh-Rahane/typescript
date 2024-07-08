@@ -234,4 +234,111 @@ console.log("this is the basic file of the proacademy typescript series on youtu
 // displaySound(dog);
 // displaySound(animal);
 
+/***************************************************************/
+// *****Lecture 55: Type Casting in typescript***********************
+/**************************************************************/
+
+// let para = <HTMLInputElement>document.querySelector('.inp')!;
+// console.log(para.value);
+
+/***************************************************************/
+// *****Lecture 56: Indexed Properties in typescript***********************
+/**************************************************************/
+
+interface Product{
+    id:number
+    name:string
+    [props:string]:string | number
+}
+
+
+let product1:Product = {
+    id:1,name:'Iphone',color:'red'
+}
+let product2:Product ={id:2,name:'Hyundai',fuel:"Petrol",engine:1.1}
+
+/***************************************************************/
+// *****Lecture 57: Function Overloading in typescript***********************
+/**************************************************************/
+
+type strOrNum = string | number
+function addition(a:string,b:string):string;
+function addition(a:number,b:number):number;
+function addition(a:strOrNum,b:strOrNum){
+    if (typeof a === 'string' || typeof b === 'string') {
+         return a.toString() + b.toString();
+    }else{
+        return a+b;
+    }
+}
+console.log(addition('hello','world').split(' , '));
+addition(1,2)
+
+/***************************************************************/
+// *****Lecture 59 and 60: Generic function and Genric constraints in typescript***********************
+/**************************************************************/
+
+
+// function swap<T>(a:T[],index1:number,index2:number):T[]{
+//     if(index1 && index2 < 0 || index1 && index2  > a.length){
+//         throw new Error;
+//     }
+//     else{
+//         [a[index1],a[index2]] = [a[index2],a[index1]];
+//         return a;
+//     }
+// }
+// let swappedArray = swap<string>(['hello','hi,','whats'],0,2);
+// console.log(swappedArray);
+
+// function expand<T extends Object , U extends Object>(obj1:T,obj2:U){
+//      return Object.assign(obj1,obj2)
+// }
+// let combined = expand({name:'rishi'},{name:'rishi',age:21})
+// console.log(combined);
+
+/***************************************************************/
+// *****Lecture 61: keyof constraint in typescript***********************
+/**************************************************************/
+
+function constraint<T extends Object, U extends keyof T>(obj:T,key:U){
+    return obj[key];
+}
+let value = constraint({name:'Honey',age:21},'name');
+console.log(value);
+
+/**************************************************************/
+// *****Lecture 62: Generic classes in typescript***********************
+/**************************************************************/
+
+type Book = {
+    name:string,
+    pages:number
+}
+type Phone = {
+    name:string,
+    ram:8
+}
+
+class ShoppingCart<T>{
+    private  items:T[] = [];
+    addItems(item:T){
+        this.items.push(item);
+    }
+    getItems(){
+        return this.items;
+    }
+}
+let bookCart = new ShoppingCart<Book>();
+bookCart.addItems({name:'Steve Jobs',pages:225});
+bookCart.addItems({name:'Mark Zukkerburg',pages:250})
+console.log(bookCart.getItems());
+
+let PhoneCart = new ShoppingCart<Phone>();
+PhoneCart.addItems({name:"Iphone",ram:8});
+console.log(PhoneCart.getItems());
+
+
+
+
 
